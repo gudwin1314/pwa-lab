@@ -1,0 +1,90 @@
+body{
+background-color: grey;
+}
+
+header .logo{
+    display: flex;
+    justify-content: center;
+}
+
+header .logo img{
+    width: 80px;
+    padding-right: 30px;
+    border-radius: 10%;
+}
+.container h1{
+background-color: black;
+color: whitesmoke;
+padding-left: 1%;
+font-family: 'Courier New', Courier, monospace;
+}
+
+.musicForm{
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    margin-left: 2%;
+}
+.musicForm input{
+    padding-bottom: 20px;
+    margin-bottom: 3%;
+}
+#addButton{
+    margin-top: 5%;
+    display: flex;
+    margin-left: 50%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-bottom: 1%;
+    background-color: rgb(15, 126, 223);
+    color: white;
+}
+#resultContainer h1{
+    background-color: black;
+    color: aliceblue;
+    padding-left: 2%;
+
+}
+#show-container{
+ background-color: antiquewhite;
+ padding: 20px;
+
+}
+
+#show-container ,h2{
+    /* background-color: white; */
+font-family: 'Courier New', Courier, monospace;
+
+}
+#messageTitle{
+color: red;
+margin: 0%;
+padding: 0%;
+}
+#messageArtist{
+    color: red;
+    margin: 0%;
+    padding: 0%;
+}
+
+@media screen and (min-width:900px) {
+    body{
+        width: 50%;
+        margin-left: 25%;
+    }
+    
+    #songs-details{
+        width: 100%;
+    }
+    .musicForm{
+        width: 70%;
+    }
+    #addButton{
+        padding: 10px;
+        padding-left: 2%;
+        padding-right: 2%;
+        background-color: black;
+    }
+
+}
+
