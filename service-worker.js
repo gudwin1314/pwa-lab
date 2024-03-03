@@ -1,8 +1,8 @@
-const cacheName = "cacheFiles-Version-Name"
+const cacheName = "cacheFiles-Version-Name";
 
 self.addEventListener('install', (event) => {
     // skip waiting helps to reload new service worker itself without manually clicking
-   
+
     self.skipWaiting();
     event.waitUntil(
         caches.open(cacheName)
@@ -44,18 +44,23 @@ self.addEventListener('activate', (event) => {
 
 });
 
-// fetching the event and responds the cache
+// Fetch is initialize
 self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.open(cacheName)
-            .then(async (cache) => {
-                // console.log("Running here");
-                const response = await cache.match(event.request);
-                // console.log('Running there');
-                return response || fetch(event.request);
-            })
-            .catch((error)=>{
-                console.log("Fetch Error:",error);
-            })
-    );
+    if (event.request.method === "GET"){
+        event.respondWith(
+            caches.open(cacheName)
+                .then((cache) => {
+                    return cache.match(event.request)
+                        .then((cacheResponse) => {
+                            const fetchedResponse = fetch(event.request)
+                                .then((networkResponse) => {
+                                    cache.put(event.request, networkResponse.clone());
+                                    return networkResponse;
+                                });
+                            return cacheResponse || fetchedResponse;
+                        })
+                })
+        );
+    }
+    
 });
